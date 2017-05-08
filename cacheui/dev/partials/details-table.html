@@ -1,0 +1,56 @@
+<md-toolbar class="md-table-toolbar md-default" ng-show="!options.rowSelection || !selected.length">
+    <div class="md-toolbar-tools">
+        <span>All Jobs</span>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="loadStuff()">
+            <md-icon md-svg-icon="public/images/ic_refresh_black_24px.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="More" ng-click="filter.show = true">
+            <md-icon md-svg-icon="public/images/ic_filter_list_black_24px.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="More" ng-click="showAddJobForm()">
+            <md-icon md-svg-icon="public/images/ic_add_alert_black_24px.svg"></md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+
+<md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+    <div class="md-toolbar-tools">
+        <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+        <span flex></span>
+        <md-button class="md-icon-button">
+            <md-icon>delete</md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+
+<md-table-container>
+    <table data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" data-ng-model="selected" md-progress="promise">
+        <!-- <thead md-head md-order="query.order">
+      <tr md-row>
+        <th md-column ng-repeat="column in columns" md-numeric="column.numeric" md-order-by="{{column.orderBy}}">
+          <span>{{column.name}}</span>
+          <span ng-if="column.unit">({{column.unit}})</span>
+        </th>
+      </tr>
+    </thead> -->
+        <thead ng-if="!options.decapitate" md-head data-md-order="query.order" md-on-reorder="onReorder">
+            <tr md-row>
+                <th md-column md:order:by="name"><span>Group </span></th>
+                <th md-column md:order:by="type"><span>Name</span></th>
+                <th md-column data-md-numeric data-md-order-by="calories.value" data-md-desc><span>URL</span></th>
+                <th md-column data-md-numeric data-md-order-by="fat.value"><span>Trigger</span></th>
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr md-row md-select="dessert" md-select-id="name" data-md-on-select="log" md-on-deselect="deselect" x-md-auto-select="options.autoSelect" ng-disabled="dessert.calories.value > 400" data-ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+                <td md-cell>{{group.name}}</td>
+                <td md-cell>{{group.job.name}}</td>
+                <td md-cell>{{group.job.url}}</td>
+                <td md-cell>{{group.job.trigger}}</td>
+            </tr>
+        </tbody>
+    </table>
+</md-table-container>
+
+<data-md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="onPaginate" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></data-md-table-pagination>

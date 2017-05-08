@@ -1,0 +1,105 @@
+<div layout="column" ng-cloak class="md-inline-form">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+                <md-icon md-svg-icon="public/images/ic_open_in_new_black_24px.svg"></md-icon>
+            </md-button>
+
+            <h2 flex md-truncate>Add Job to the Queue</h2>
+
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="public/images/ic_close_black_24px.svg"></md-icon>
+            </md-button>
+
+
+        </div>
+    </md-toolbar>
+    <md-content layout-padding>
+        <div>
+            <form name="jobForm">
+
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Groups</span>
+                            <span class="md-subhead">Tell us about your job and how to group them.</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <div layout="row">
+                            <md-input-container class="md-block">
+                                <label>Group Name</label>
+                                <input ng-model="group.name">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Job Name</label>
+                                <input ng-model="group.job.name">
+                            </md-input-container>
+                        </div>
+                    </md-card-content>
+                </md-card>
+
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Details</span>
+                            <span class="md-subhead">Tell us more on the details.</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <div layout="row">
+                            <md-input-container class="md-block">
+                                <label>URL</label>
+                                <input ng-model="group.name">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Headers</label>
+                                <input ng-model="group.job.name">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Method</label>
+                                <md-select ng-model="ctrl.userState">
+                                    <md-option ng-value="GET">GET</md-option>
+                                    <md-option ng-value="POST">POST</md-option>
+                                </md-select>
+                            </md-input-container>
+
+
+                        </div>
+                        <div layout="row">
+                            <md-input-container class="md-block">
+                                <label>Body</label>
+                                <input textarea ng-model="group.job.name">
+                            </md-input-container>
+
+                        </div>
+                    </md-card-content>
+                </md-card>
+
+
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Triggers</span>
+                            <span class="md-subhead">Tell us how to trigger the job.</span>
+                        </md-card-title-text>
+                    </md-card-title>
+
+                    <md-card-content>
+                        <div layout="row">
+                            <md-input-container>
+                                <label>When</label>
+                                <input ng-model="group.job.triggers.when">
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Cron</label>
+                                <input ng-model="group.job.triggers.cron">
+                            </md-input-container>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </form>
+        </div>
+    </md-content>
+</div>

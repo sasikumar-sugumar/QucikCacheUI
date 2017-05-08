@@ -1,0 +1,20 @@
+<div layout="column" ng-cloak class="md-inline-form">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+                <md-icon md-svg-icon="public/images/ic_schedule_black_24px.svg"></md-icon>
+            </md-button>
+
+            <h2 flex md-truncate>Scheduled Jobs</h2>
+
+        </div>
+    </md-toolbar>
+
+    <md-content layout="column" flex ng-controller="nutritionController">
+
+
+        <md-card ng-include="'partials/details-table.html'"></md-card>
+
+    </md-content>
+</div>
